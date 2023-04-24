@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private RegisteredUsersDAO database;
     private String nameInputString, passInputString;
     private RegisteredUser user;
-    private boolean isAdmin;
+    private String isAdmin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
         nameInputString = nameInput.getText().toString();
         passInputString = passInput.getText().toString();
         user = database.getUserByUsername(nameInputString);
-        isAdmin = user.isAdmin();
+        isAdmin = user.isAdmin() + "";
     }
 
     private boolean checkForUserInDatabase() {

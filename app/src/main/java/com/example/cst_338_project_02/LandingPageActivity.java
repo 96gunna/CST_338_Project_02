@@ -13,7 +13,7 @@ public class LandingPageActivity extends AppCompatActivity {
     private static final String LANDING_USERNAME = "com.example.cst_338_project_02.landingPageUsername";
     private static final String ADMIN_CHECK = "com.example.cst_338_project_02.isAdmin";
     private TextView welcomeMessage;
-    private boolean adminCheck;
+    private String adminCheck;
     private String username;
     private Button adminActions;
     private Button logOut;
@@ -25,10 +25,12 @@ public class LandingPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_landing_page);
         welcomeMessage = findViewById(R.id.textViewWelcomeMes);
         username = getIntent().getStringExtra(LANDING_USERNAME);
-        adminCheck = getIntent().getBooleanExtra(ADMIN_CHECK, false);
+        adminCheck = getIntent().getStringExtra(ADMIN_CHECK);
         adminActions = findViewById(R.id.adminButton);
-        if (adminCheck) {
-            adminActions.setVisibility(View.VISIBLE);
+        if (adminCheck != null) {
+            if (adminCheck.equals("true")) {
+                adminActions.setVisibility(View.VISIBLE);
+            }
         } else {
             adminActions.setVisibility(View.INVISIBLE);
         }
@@ -44,7 +46,7 @@ public class LandingPageActivity extends AppCompatActivity {
 
     }
 
-    public static Intent intentFactory(Context context, String username, boolean admin) {
+    public static Intent intentFactory(Context context, String username, String admin) {
         Intent intent = new Intent(context, LandingPageActivity.class);
         intent.putExtra(LANDING_USERNAME,username);
         intent.putExtra(ADMIN_CHECK, admin);
