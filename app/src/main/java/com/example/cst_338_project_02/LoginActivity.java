@@ -60,7 +60,9 @@ public class LoginActivity extends AppCompatActivity {
         nameInputString = nameInput.getText().toString();
         passInputString = passInput.getText().toString();
         user = database.getUserByUsername(nameInputString);
-        isAdmin = user.isAdmin() + "";
+        if (user != null) {
+            isAdmin = user.isAdmin() + "";
+        }
     }
 
     private boolean checkForUserInDatabase() {

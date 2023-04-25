@@ -2,13 +2,11 @@ package com.example.cst_338_project_02;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
-
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import com.example.cst_338_project_02.DB.AppDatabase;
 import com.example.cst_338_project_02.DB.RegisteredUsersDAO;
 import com.example.cst_338_project_02.databinding.ActivityMainBinding;

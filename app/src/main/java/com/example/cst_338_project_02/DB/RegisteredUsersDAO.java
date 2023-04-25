@@ -27,4 +27,7 @@ public interface RegisteredUsersDAO {
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE username= :username")
     RegisteredUser getUserByUsername(String username);
+
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userId= :userId")
+    RegisteredUser getUserByUserId(String userId);
 }

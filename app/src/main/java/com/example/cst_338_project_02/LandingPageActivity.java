@@ -27,10 +27,8 @@ public class LandingPageActivity extends AppCompatActivity {
         username = getIntent().getStringExtra(LANDING_USERNAME);
         adminCheck = getIntent().getStringExtra(ADMIN_CHECK);
         adminActions = findViewById(R.id.adminButton);
-        if (adminCheck != null) {
-            if (adminCheck.equals("true")) {
+        if (adminCheck.equals("true")) {
                 adminActions.setVisibility(View.VISIBLE);
-            }
         } else {
             adminActions.setVisibility(View.INVISIBLE);
         }
@@ -54,6 +52,6 @@ public class LandingPageActivity extends AppCompatActivity {
     }
 
     private void setWelcome() {
-        welcomeMessage.setText("Welcome " + username + "!");
+        welcomeMessage.setText("Welcome " + username + "!" + adminCheck);
     }
 }
