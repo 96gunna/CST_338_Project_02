@@ -11,6 +11,7 @@ import com.example.cst_338_project_02.RegisteredUser;
 @Database(entities = {RegisteredUser.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public static final String USER_TABLE = "USER_TABLE";
+    public static final String SEEDS_TABLE = "SEEDS_TABLE";
     private static volatile AppDatabase instance;
     private static final Object LOCK = new Object();
     public abstract RegisteredUsersDAO getRegisteredUsersDAO();
