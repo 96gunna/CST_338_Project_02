@@ -12,7 +12,6 @@ public class RegisteredUser {
     private int userId;
     private String username;
     private String password;
-
     private boolean isAdmin;
 
     public RegisteredUser(String username, String password, boolean isAdmin) {

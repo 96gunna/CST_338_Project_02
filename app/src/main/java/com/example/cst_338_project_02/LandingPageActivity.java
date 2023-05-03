@@ -18,7 +18,6 @@ public class LandingPageActivity extends AppCompatActivity {
     private Button adminActions;
     private Button logOut;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +27,7 @@ public class LandingPageActivity extends AppCompatActivity {
         adminCheck = getIntent().getStringExtra(ADMIN_CHECK);
         adminActions = findViewById(R.id.adminButton);
         if (adminCheck.equals("true")) {
-                adminActions.setVisibility(View.VISIBLE);
+            adminActions.setVisibility(View.VISIBLE);
         } else {
             adminActions.setVisibility(View.INVISIBLE);
         }
@@ -46,12 +45,12 @@ public class LandingPageActivity extends AppCompatActivity {
 
     public static Intent intentFactory(Context context, String username, String admin) {
         Intent intent = new Intent(context, LandingPageActivity.class);
-        intent.putExtra(LANDING_USERNAME,username);
+        intent.putExtra(LANDING_USERNAME, username);
         intent.putExtra(ADMIN_CHECK, admin);
         return intent;
     }
 
     private void setWelcome() {
-        welcomeMessage.setText("Welcome " + username + "!" + adminCheck);
+        welcomeMessage.setText("Welcome " + username + "!\tAdmin Status: " + adminCheck);
     }
 }

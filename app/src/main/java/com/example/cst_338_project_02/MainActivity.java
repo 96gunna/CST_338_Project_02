@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
                     RegisteredUser testuser1 = new RegisteredUser("testuser1", "testuser1", false);
                     RegisteredUser admin2 = new RegisteredUser("admin2", "admin2", true);
                     usersDAO.insert(testuser1, admin2);
-                    usersDAO.delete(admin2);
                 }
                 Intent intent = LoginActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
@@ -47,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = CreateAccountActivity.intentFactory(getApplicationContext());
+                startActivity(intent);
             }
         });
 
