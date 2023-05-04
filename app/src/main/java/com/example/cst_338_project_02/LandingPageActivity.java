@@ -51,6 +51,6 @@ public class LandingPageActivity extends AppCompatActivity {
     }
 
     private void setWelcome() {
-        welcomeMessage.setText("Welcome " + username + "!\tAdmin Status: " + adminCheck);
+        welcomeMessage.setText("Welcome " + username + "!\nAdmin Status: " + adminCheck);
     }
 }
