@@ -49,7 +49,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMes" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonBrowseProducts"
         android:layout_width="130dp"
         android:layout_height="110dp"
         android:layout_marginStart="60dp"
