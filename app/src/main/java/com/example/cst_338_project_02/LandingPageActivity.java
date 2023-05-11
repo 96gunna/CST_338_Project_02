@@ -76,7 +76,8 @@ public class LandingPageActivity extends AppCompatActivity {
     }
 
     private void setWelcome() {
-        welcomeMessage.setText("Welcome " + username + "!\nAdmin Status: " + adminCheck);
+        String text = "Welcome " + username + "!\nAdmin Status:" + adminCheck;
+        welcomeMessage.setText(text);
     }
 
     private void getDatabase() {
