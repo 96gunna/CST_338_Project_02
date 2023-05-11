@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "bc596d01b2c8256fd8d87c2aa1ccfbbd",
+    "identityHash": "e7bb2ad6d703914c4b99da0557eb2808",
     "entities": [
       {
         "tableName": "USER_TABLE",
@@ -88,7 +88,7 @@
       },
       {
         "tableName": "CART_TABLE",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cartId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `productId` INTEGER NOT NULL, `username` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`cartId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `productId` INTEGER NOT NULL, `userId` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "cartId",
@@ -103,10 +103,10 @@
             "notNull": true
           },
           {
-            "fieldPath": "username",
-            "columnName": "username",
-            "affinity": "TEXT",
-            "notNull": false
+            "fieldPath": "userId",
+            "columnName": "userId",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -122,7 +122,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'bc596d01b2c8256fd8d87c2aa1ccfbbd')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e7bb2ad6d703914c4b99da0557eb2808')"
     ]
   }
 }

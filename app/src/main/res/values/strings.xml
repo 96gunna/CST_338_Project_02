@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">CST_338_Project_02</string>
+    <string name="product_name">Product Name</string>
+    <string name="back_to_home">Back to Home</string>
+    <string name="add_to_cart">Add to Cart</string>
+    <string name="enter_a_name">Enter a name</string>
+    <string name="select_a_product">Select a product</string>
 </resources>

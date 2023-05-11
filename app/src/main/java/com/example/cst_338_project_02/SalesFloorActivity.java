@@ -7,10 +7,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.cst_338_project_02.DB.AppDatabase;
 import com.example.cst_338_project_02.DB.CartDAO;
@@ -27,6 +31,8 @@ public class SalesFloorActivity extends AppCompatActivity {
     private Spinner productSpinner;
     private Button cartButton;
     private Button homeButton;
+    private Button viewCartButton;
+    private EditText userTextInput;
     private RegisteredUser currentUser;
     private String username;
     private int userID;
@@ -39,17 +45,57 @@ public class SalesFloorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sales_floor);
-        productSpinner = findViewById(R.id.productSpinner);
-        homeButton = findViewById(R.id.backButton);
-        cartButton = findViewById(R.id.cartButton);
-        mainDisplay = findViewById(R.id.seedsDisplay);
-        mainDisplay.setMovementMethod(new ScrollingMovementMethod());
+        wireUpDisplay();
         getDatabases();
-        productList = seedsDAO.getAllProducts();
-        username = getIntent().getStringExtra(SALES_USERNAME);
-        currentUser = usersDAO.getUserByUsername(username);
-        userID = currentUser.getUserId();
         pullDataFromDatabase();
+        viewCartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        homeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String admin = Boolean.toString(currentUser.isAdmin());
+                Intent intent = LandingPageActivity.intentFactory(getApplicationContext(), username, admin);
+                startActivity(intent);
+            }
+        });
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String input = userTextInput.getText().toString().trim();
+                if (!input.isEmpty()) {
+                    Seed newSeed = seedsDAO.getProductByName(input);
+                    Cart cart = new Cart(newSeed.getProductId(), userID);
+                    cartDAO.insert(cart);
+                    Toast.makeText(SalesFloorActivity.this, input + " was added to the cart.", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SalesFloorActivity.this, "Please enter a search query.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        productSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            private boolean noInteraction = true;
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if (noInteraction) {
+                    noInteraction = false;
+                } else {
+                    String spinnerText = (String) adapterView.getItemAtPosition(i);
+                    if (!spinnerText.equals("-Select-")) {
+                        String[] names = spinnerText.split(":");
+                        Toast.makeText(SalesFloorActivity.this, names[0], Toast.LENGTH_SHORT).show();
+                        //  Need to implement adding to cart from this option
+                    }
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public static Intent intentFactory(Context context, String username) {
@@ -58,15 +104,30 @@ public class SalesFloorActivity extends AppCompatActivity {
         return intent;
     }
 
-    public void pullDataFromDatabase() {
+    private void wireUpDisplay() {
+        productSpinner = findViewById(R.id.productSpinner);
+        homeButton = findViewById(R.id.backButton);
+        cartButton = findViewById(R.id.cartButton);
+        viewCartButton = findViewById(R.id.viewCartButton);
+        userTextInput = findViewById(R.id.productEditText);
+        mainDisplay = findViewById(R.id.seedsDisplay);
+        mainDisplay.setMovementMethod(new ScrollingMovementMethod());
+    }
+
+    private void pullDataFromDatabase() {
+        productList = seedsDAO.getAllProducts();
+        username = getIntent().getStringExtra(SALES_USERNAME);
+        currentUser = usersDAO.getUserByUsername(username);
+        userID = currentUser.getUserId();
         List<String> productStrings = new ArrayList<>();
+        productStrings.add("-Select-");
         if (!productList.isEmpty()) {
-            StringBuilder sb = new StringBuilder();
-            for (Seed s : productList) {
-                sb.append(s.toString());
-                productStrings.add(s.dropdownOptions());
+            StringBuilder displayText = new StringBuilder();
+            for (Seed seed : productList) {
+                displayText.append(seed.toString());
+                productStrings.add(seed.getName() + ":" + seed.getScientificName());
             }
-            mainDisplay.setText(sb.toString());
+            mainDisplay.setText(displayText.toString());
         } else {
             mainDisplay.setText("All Sold Out!");
         }

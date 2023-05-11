@@ -12,14 +12,19 @@ public class Cart {
 
     private int productId;
 
-    private String username;
+    private int userId;
 
-    public String getUsername() {
-        return username;
+    public Cart(int productId, int userId) {
+        this.productId = productId;
+        this.userId = userId;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public int getCartId() {
