@@ -9,9 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.cst_338_project_02.DB.AppDatabase;
+import com.example.cst_338_project_02.DB.RegisteredUsersDAO;
 import com.example.cst_338_project_02.DB.SeedsDAO;
 
 import java.util.List;
@@ -26,7 +26,9 @@ public class LandingPageActivity extends AppCompatActivity {
     private Button adminActions;
     private Button logOut;
     private Button browseProducts;
+    private Button viewCart;
     private SeedsDAO database;
+    private RegisteredUsersDAO usersDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,15 @@ public class LandingPageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = MainActivity.intentFactory(getApplicationContext());
+                startActivity(intent);
+            }
+        });
+        viewCart = findViewById(R.id.viewCartButtonLanding);
+        viewCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RegisteredUser currentUser = usersDAO.getUserByUsername(username);
+                Intent intent = ViewCartActivity.intentFactory(getApplicationContext(), currentUser.getUserId());
                 startActivity(intent);
             }
         });
@@ -76,7 +87,7 @@ public class LandingPageActivity extends AppCompatActivity {
     }
 
     private void setWelcome() {
-        String text = "Welcome " + username + "!\nAdmin Status:" + adminCheck;
+        String text = "Welcome " + username + "!";
         welcomeMessage.setText(text);
     }
 
@@ -85,5 +96,9 @@ public class LandingPageActivity extends AppCompatActivity {
                 .allowMainThreadQueries()
                 .build()
                 .getSeedsDAO();
+        usersDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.USER_TABLE)
+                .allowMainThreadQueries()
+                .build()
+                .getRegisteredUsersDAO();
     }
 }

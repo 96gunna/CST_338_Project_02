@@ -19,55 +19,48 @@
         app:layout_constraintVertical_bias="0.147" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="140dp"
-        android:layout_marginEnd="60dp"
+        android:id="@+id/viewCartButtonLanding"
+        android:layout_width="261dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="64dp"
         android:text="View Cart"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMes" />
-
-    <Button
-        android:id="@+id/button4"
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="304dp"
-        android:text="Past Orders"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMes" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonBrowseProducts" />
 
     <Button
         android:id="@+id/logOutButton"
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:layout_marginTop="304dp"
-        android:layout_marginEnd="60dp"
+        android:layout_width="261dp"
+        android:layout_height="113dp"
         android:text="Log Out"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMes" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewCartButtonLanding"
+        app:layout_constraintVertical_bias="0.465" />
 
     <Button
         android:id="@+id/buttonBrowseProducts"
-        android:layout_width="130dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="140dp"
+        android:layout_width="261dp"
+        android:layout_height="113dp"
+        android:layout_marginTop="48dp"
         android:text="Browse Products"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewWelcomeMes" />
 
     <Button
         android:id="@+id/adminButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="107dp"
+        android:layout_height="56dp"
         android:layout_marginTop="16dp"
         android:text="Admin"
         android:visibility="invisible"
-        tools:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

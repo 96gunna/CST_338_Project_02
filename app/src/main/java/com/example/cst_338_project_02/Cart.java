@@ -19,6 +19,15 @@ public class Cart {
         this.userId = userId;
     }
 
+    @Override
+    public String toString() {
+        return "Cart{" +
+                "cartId=" + cartId +
+                ", productId=" + productId +
+                ", userId=" + userId +
+                '}';
+    }
+
     public int getUserId() {
         return userId;
     }

@@ -32,5 +32,5 @@ public interface SeedsDAO {
     Seed getProductBySciName(String scientificName);
 
     @Query("SELECT * FROM " + AppDatabase.SEEDS_TABLE + " WHERE productId= :productId")
-    Seed getProductById(String productId);
+    Seed getProductById(int productId);
 }

@@ -26,7 +26,7 @@ public class Seed {
         return name + " : " + scientificName + "\nPrice: " + String.format("%.2f", price) +"\nCurrent Stock: " + currentCount + "\n-=-=-=-=-=-=-=-=-=-=\n";
     }
 
-    public String dropdownOptions() {
+    public String nameString() {
         return name + " : " + scientificName;
     }
 

@@ -32,10 +32,10 @@ public class SalesFloorActivity extends AppCompatActivity {
     private Button cartButton;
     private Button homeButton;
     private Button viewCartButton;
-    private EditText userTextInput;
     private RegisteredUser currentUser;
     private String username;
     private int userID;
+    private String dropdownSelection;
     private SeedsDAO seedsDAO;
     private RegisteredUsersDAO usersDAO;
     private CartDAO cartDAO;
@@ -51,7 +51,8 @@ public class SalesFloorActivity extends AppCompatActivity {
         viewCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = ViewCartActivity.intentFactory(getApplicationContext(), currentUser.getUserId());
+                startActivity(intent);
             }
         });
         homeButton.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +66,11 @@ public class SalesFloorActivity extends AppCompatActivity {
         cartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String input = userTextInput.getText().toString().trim();
-                if (!input.isEmpty()) {
-                    Seed newSeed = seedsDAO.getProductByName(input);
+                if (dropdownSelection != null) {
+                    Seed newSeed = seedsDAO.getProductBySciName(dropdownSelection);
                     Cart cart = new Cart(newSeed.getProductId(), userID);
                     cartDAO.insert(cart);
-                    Toast.makeText(SalesFloorActivity.this, input + " was added to the cart.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SalesFloorActivity.this, dropdownSelection + " was added to the cart.", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(SalesFloorActivity.this, "Please enter a search query.", Toast.LENGTH_SHORT).show();
                 }
@@ -87,7 +87,7 @@ public class SalesFloorActivity extends AppCompatActivity {
                     if (!spinnerText.equals("-Select-")) {
                         String[] names = spinnerText.split(":");
                         Toast.makeText(SalesFloorActivity.this, names[0], Toast.LENGTH_SHORT).show();
-                        //  Need to implement adding to cart from this option
+                        dropdownSelection = names[1];
                     }
                 }
             }
@@ -109,7 +109,6 @@ public class SalesFloorActivity extends AppCompatActivity {
         homeButton = findViewById(R.id.backButton);
         cartButton = findViewById(R.id.cartButton);
         viewCartButton = findViewById(R.id.viewCartButton);
-        userTextInput = findViewById(R.id.productEditText);
         mainDisplay = findViewById(R.id.seedsDisplay);
         mainDisplay.setMovementMethod(new ScrollingMovementMethod());
     }
