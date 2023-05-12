@@ -23,13 +23,11 @@ public class Seed {
 
     @Override
     public String toString() {
-        return "Seeds{" +
-                "productId=" + productId +
-                ", name='" + name + '\'' +
-                ", scientificName='" + scientificName + '\'' +
-                ", price=" + price +
-                ", currentCount=" + currentCount +
-                '}';
+        return name + " : " + scientificName + "\nPrice: " + String.format("%.2f", price) +"\nCurrent Stock: " + currentCount + "\n-=-=-=-=-=-=-=-=-=-=\n";
+    }
+
+    public String nameString() {
+        return name + " : " + scientificName;
     }
 
     public int getProductId() {

@@ -29,5 +29,5 @@ public interface RegisteredUsersDAO {
     RegisteredUser getUserByUsername(String username);
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userId= :userId")
-    RegisteredUser getUserByUserId(String userId);
+    RegisteredUser getUserByUserId(int userId);
 }

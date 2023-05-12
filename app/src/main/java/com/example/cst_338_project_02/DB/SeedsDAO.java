@@ -25,9 +25,12 @@ public interface SeedsDAO {
     @Query("SELECT * FROM " + AppDatabase.SEEDS_TABLE)
     List<Seed> getAllProducts();
 
-    @Query("SELECT * FROM " + AppDatabase.SEEDS_TABLE + " WHERE name= :name")
+    @Query("SELECT * FROM " + AppDatabase.SEEDS_TABLE + " WHERE name LIKE:name")
     Seed getProductByName(String name);
 
+    @Query("SELECT * FROM " + AppDatabase.SEEDS_TABLE + " WHERE scientificName LIKE:scientificName")
+    Seed getProductBySciName(String scientificName);
+
     @Query("SELECT * FROM " + AppDatabase.SEEDS_TABLE + " WHERE productId= :productId")
-    Seed getProductById(String productId);
+    Seed getProductById(int productId);
 }

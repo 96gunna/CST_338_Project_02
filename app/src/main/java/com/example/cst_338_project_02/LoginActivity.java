@@ -66,6 +66,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean checkForUserInDatabase() {
+        if (nameInputString.isEmpty() || passInputString.isEmpty()) {
+            Toast.makeText(this, "Please enter a username and password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
         user = database.getUserByUsername(nameInputString);
         if (user == null) {
             Toast.makeText(this, "no " + nameInputString + " found", Toast.LENGTH_SHORT).show();

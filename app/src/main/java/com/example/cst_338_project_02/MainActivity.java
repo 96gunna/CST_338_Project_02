@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 List<RegisteredUser> users = usersDAO.getAllUsers();
-                System.out.println(users.size());
                 if (users.size() <= 0) {
                     RegisteredUser testuser1 = new RegisteredUser("testuser1", "testuser1", false);
                     RegisteredUser admin2 = new RegisteredUser("admin2", "admin2", true);
