@@ -41,6 +41,13 @@ public class LandingPageActivity extends AppCompatActivity {
         adminActions = findViewById(R.id.adminButton);
         if (adminCheck.equals("true")) {
             adminActions.setVisibility(View.VISIBLE);
+            adminActions.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = AdminHomeActivity.intentFactory(getApplicationContext());
+                    startActivity(intent);
+                }
+            });
         } else {
             adminActions.setVisibility(View.INVISIBLE);
         }
