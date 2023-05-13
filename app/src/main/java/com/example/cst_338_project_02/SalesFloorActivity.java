@@ -89,7 +89,6 @@ public class SalesFloorActivity extends AppCompatActivity {
                     String spinnerText = (String) adapterView.getItemAtPosition(i);
                     if (!spinnerText.equals("-Select-")) {
                         String[] names = spinnerText.split(":");
-                        Toast.makeText(SalesFloorActivity.this, names[0], Toast.LENGTH_SHORT).show();
                         dropdownSelection = names[1];
                     }
                 }

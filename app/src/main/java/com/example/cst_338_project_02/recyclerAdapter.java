@@ -45,8 +45,9 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.cardVi
     @Override
     public void onBindViewHolder(@NonNull recyclerAdapter.cardViewHolder holder, int position) {
         TextView textViewName = holder.textViewName;
-        TextView textViewVersion = holder.textViewVersion;
+        TextView adminStatus = holder.textViewVersion;
         textViewName.setText(currentUsers.get(position).toString());
+        adminStatus.setText("Admin Status: " + currentUsers.get(position).isAdmin());
     }
 
     @Override
