@@ -68,6 +68,9 @@ public class SalesFloorActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (dropdownSelection != null) {
                     Seed newSeed = seedsDAO.getProductBySciName(dropdownSelection);
+                    int count = newSeed.getCurrentCount() - 1;
+                    newSeed.setCurrentCount(count);
+                    seedsDAO.update(newSeed);
                     Cart cart = new Cart(newSeed.getProductId(), userID);
                     cartDAO.insert(cart);
                     Toast.makeText(SalesFloorActivity.this, dropdownSelection + " was added to the cart.", Toast.LENGTH_SHORT).show();
@@ -86,7 +89,6 @@ public class SalesFloorActivity extends AppCompatActivity {
                     String spinnerText = (String) adapterView.getItemAtPosition(i);
                     if (!spinnerText.equals("-Select-")) {
                         String[] names = spinnerText.split(":");
-                        Toast.makeText(SalesFloorActivity.this, names[0], Toast.LENGTH_SHORT).show();
                         dropdownSelection = names[1];
                     }
                 }

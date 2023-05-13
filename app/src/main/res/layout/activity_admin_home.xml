@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".AdminHomeActivity">
 
+    <TextView
+        android:id="@+id/startPageHead2"
+        android:layout_width="182dp"
+        android:layout_height="90dp"
+        android:gravity="center"
+        android:text="Admin Home"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.024" />
+
+    <Spinner
+        android:id="@+id/userSpinner"
+        android:layout_width="384dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.592"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/removeUsersButton" />
+
+    <Button
+        android:id="@+id/removeUsersButton"
+        android:layout_width="200dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="176dp"
+        android:text="Delete Users"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/makeAdminButton"
+        android:layout_width="200dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="76dp"
+        android:text="Make Admin"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userSpinner"
+        app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

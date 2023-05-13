@@ -68,7 +68,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     }
     private boolean verifyUsername(String username) {
         RegisteredUser temp = database.getUserByUsername(username);
-        if (!(temp instanceof RegisteredUser)) {
+        if (temp == null) {
             return true;
         }
         Toast.makeText(this, "Username already in use. Please select another.", Toast.LENGTH_SHORT).show();
