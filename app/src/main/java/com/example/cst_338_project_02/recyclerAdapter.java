@@ -37,7 +37,7 @@ public class recyclerAdapter extends RecyclerView.Adapter<recyclerAdapter.cardVi
     public recyclerAdapter.cardViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.admin_view_user_card, parent, false);
-
+        view.setOnClickListener(RemoveUsersActivity.customClick);
         recyclerAdapter.cardViewHolder newCard = new recyclerAdapter.cardViewHolder(view);
         return newCard;
     }

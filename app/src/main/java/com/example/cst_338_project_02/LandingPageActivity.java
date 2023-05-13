@@ -44,7 +44,7 @@ public class LandingPageActivity extends AppCompatActivity {
             adminActions.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = AdminHomeActivity.intentFactory(getApplicationContext());
+                    Intent intent = AdminHomeActivity.intentFactory(getApplicationContext(), username);
                     startActivity(intent);
                 }
             });
